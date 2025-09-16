@@ -41,14 +41,14 @@ tokens :-
   "scan!"                               { \_ -> ScanBang }
   "orElse"                              { \_ -> OrElseKW }
   "toString"                            { \_ -> ToStringKW }
-  "import"                              { \_ -> ImportKW }      -- NOVO
-  "match"                               { \_ -> MatchKW }       -- NOVO
-  "with"                                { \_ -> WithKW }        -- NOVO
-  "end-case"                            { \_ -> EndCaseKW }     -- NOVO
-  "otherwise"                           { \_ -> OtherwiseKW }   -- NOVO
-  "end-match"                           { \_ -> EndMatchKW }    -- NOVO
-  "end-main"                            { \_ -> EndMainKW }     -- NOVO
-  "end-weirdSum"                        { \_ -> EndWeirdSumKW } -- NOVO
+  "import"                              { \_ -> ImportKW }
+  "match"                               { \_ -> MatchKW }
+  "with"                                { \_ -> WithKW }
+  "end-case"                            { \_ -> EndCaseKW }
+  "otherwise"                           { \_ -> OtherwiseKW }
+  "end-match"                           { \_ -> EndMatchKW }
+  "end-main"                            { \_ -> EndMainKW }
+  "end-weirdSum"                        { \_ -> EndWeirdSumKW }
 
   -- 4. Operadores e Símbolos (os de múltiplos caracteres vêm primeiro)
   "->"                                  { \_ -> Arrow }
@@ -59,7 +59,7 @@ tokens :-
   "."                                   { \_ -> Dot }
   ","                                   { \_ -> Comma }
   "+"                                   { \_ -> Plus }
-  "/"                                   { \_ -> Slash }         -- NOVO
+  "/"                                   { \_ -> Slash }
   ">"                                   { \_ -> GreaterThan }
   "<"                                   { \_ -> LessThan }
   "("                                   { \_ -> LParen }
@@ -75,7 +75,7 @@ tokens :-
   -- 6. Identificadores (A ORDEM É IMPORTANTE!)
   @$alpha[$alpha $digit _]* { \s -> GlobalId s }
   $upper[$alpha $digit _]* { \s -> TypeId s }
-  $lower[$alpha $digit _]*\?            { \s -> VarIdQ s }      -- NOVO (precisa vir antes de VarId)
+  $lower[$alpha $digit _]*\?            { \s -> VarIdQ s }
   $lower[$alpha $digit _]* { \s -> VarId s }
 
 {
