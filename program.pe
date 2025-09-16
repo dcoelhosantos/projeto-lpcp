@@ -1,6 +1,58 @@
-program main
-var x : int;
-begin
-   x := 1;
-   if x > 0 then write "ok!"
-end
+import ./calculadora.meh
+@abc = 3
+@fed = 5.0
+ 
+type User def 
+    Client(client : Client)
+    User(user : User)
+end-type
+ 
+type Client def 
+  MkClient(String, Name, Float)
+end-type 
+ 
+type Admin def 
+  MkAdmin(String, Name)
+end-type 
+ 
+fn main() do
+    print!("Digite um número: ")
+    let x = scan!(Int)
+    
+    print!("Digite outro número:")
+    let x? = scan?(Int)
+ 
+    match x? with
+        Some(v) do
+           print!("Agora escolha um número diferente de " ++ v.toString ++ ": ")
+           let w = scan?(Int).orElse(42)
+        end-case
+        otherwise do
+            print!("Entrada inválida")
+        end-case
+    end-match
+end-main
+ 
+fn weirdSum(x: Int, y: Int) -> Int do
+    let z = 0
+ 
+    for i in [0..3] do
+        if x < y then
+          let z = x + y + z
+        else
+          let z = x + z
+          skip
+        end-if
+        let x = x + 1
+    end-for 
+ 
+    for i in [0..3) do
+        let z = z + i
+    end-for
+ 
+    if @abc > 3 then
+      return @abc
+    end-if
+ 
+    return z + @abc
+end-weirdSum
