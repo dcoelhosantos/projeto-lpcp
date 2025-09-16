@@ -24,7 +24,7 @@ fn main() do
  
     match x? with
         Some(v) do
-           print!("Agora escolha um número diferente de " ++ v.toString ++ ": ")
+           print!("Agora escolha um número diferente de " ++ v.toString() ++ ": ")
            let w = scan?(Int).orElse(42)
         end-case
         otherwise do

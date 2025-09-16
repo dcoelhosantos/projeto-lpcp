@@ -1,0 +1,17 @@
+import ./nada.meh
+@inicio = 1
+
+fn main() do
+	print!("Queres calcular o fatorial de quanto?")
+	let x = scan!(Int)
+	let res = fatorial(x)
+	print!("O resultado é: " ++ res.toString())
+end-main
+
+fn fatorial(x: Int) -> Int do
+	let resultado = inicio
+	for i in [1..x] do
+		resultado = resultado * i
+	end-for
+	return resultado
+end-fatorial

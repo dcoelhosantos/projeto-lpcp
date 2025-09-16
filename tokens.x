@@ -47,18 +47,22 @@ tokens :-
   "end-case"                            { \_ -> EndCaseKW }
   "otherwise"                           { \_ -> OtherwiseKW }
   "end-match"                           { \_ -> EndMatchKW }
-  "end-main"                            { \_ -> EndMainKW }
-  "end-weirdSum"                        { \_ -> EndWeirdSumKW }
 
   -- 4. Operadores e Símbolos (os de múltiplos caracteres vêm primeiro)
   "->"                                  { \_ -> Arrow }
   "++"                                  { \_ -> Concat }
   ".."                                  { \_ -> Range }
+  "+="                                  { \_ -> PlusEq }
+  "-="                                  { \_ -> MinusEq }
+  "*="                                  { \_ -> TimesEq }
+  "/="                                  { \_ -> SlashEq }
   "="                                   { \_ -> Eq }
   ":"                                   { \_ -> Colon }
   "."                                   { \_ -> Dot }
   ","                                   { \_ -> Comma }
   "+"                                   { \_ -> Plus }
+  "-"                                   { \_ -> Minus }
+  "*"                                   { \_ -> Times }
   "/"                                   { \_ -> Slash }
   ">"                                   { \_ -> GreaterThan }
   "<"                                   { \_ -> LessThan }
@@ -75,6 +79,7 @@ tokens :-
   -- 6. Identificadores (A ORDEM É IMPORTANTE!)
   @$alpha[$alpha $digit _]* { \s -> GlobalId s }
   $upper[$alpha $digit _]* { \s -> TypeId s }
+  "end-"$lower[$alpha $digit _]* { \s -> EndFnId (drop 4 s) }
   $lower[$alpha $digit _]*\?            { \s -> VarIdQ s }
   $lower[$alpha $digit _]* { \s -> VarId s }
 
@@ -88,11 +93,12 @@ data Token
   | ForKW | InKW | EndForKW
   | IfKW | ThenKW | ElseKW | EndIfKW
   | PrintBang | ScanQ | ScanBang | OrElseKW | ToStringKW
-  -- Novos Keywords
-  | ImportKW | MatchKW | WithKW | EndCaseKW | OtherwiseKW | EndMatchKW | EndMainKW | EndWeirdSumKW
+  | ImportKW | MatchKW | WithKW | EndCaseKW | OtherwiseKW | EndMatchKW
   -- Símbolos
   | Arrow | Concat | Range | Eq | Colon | Dot | Comma
-  | Plus | Slash | GreaterThan | LessThan
+  | Plus | Minus | Times | Slash
+  | PlusEq | MinusEq | TimesEq | SlashEq
+  | GreaterThan | LessThan
   | LParen | RParen | LBracket | RBracket
   -- Literais
   | IntLit Integer
@@ -101,6 +107,7 @@ data Token
   -- Identificadores
   | GlobalId String
   | TypeId String -- Ex: User, Client, MkClient, Some
+  | EndFnId String -- NOVO TOKEN: Captura "main" de "end-main"
   | VarIdQ String -- Ex: x?
   | VarId String  -- Ex: main, weirdSum, x, y, z
   deriving (Eq, Show)
