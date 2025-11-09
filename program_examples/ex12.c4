@@ -1,0 +1,14 @@
+
+Variant Animal {
+  Dog(Animal[]);
+  Cat(Animal);
+  Horse(&Animal);
+}
+
+Variant Animal {
+  Dog();
+  Cat();
+  Horse();
+}
+
+

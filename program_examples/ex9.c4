@@ -1,0 +1,2 @@
+float y = 5;
+//should fail

@@ -1,0 +1,7 @@
+fn void main() {
+    
+    // Isso aqui vai quebrar o lexer
+    printf("Uma string muito longa que
+            o usuario quebrou.");
+            
+}

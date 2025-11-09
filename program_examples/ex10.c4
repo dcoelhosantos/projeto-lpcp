@@ -1,0 +1,7 @@
+Struct Car {
+  // name: String
+  //String name;
+  int year;
+
+}
+

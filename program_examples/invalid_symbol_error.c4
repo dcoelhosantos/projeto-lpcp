@@ -1,0 +1,4 @@
+fn int main() {
+    int $var = 10; // Oops, isso não é PHP
+    return $var;
+}

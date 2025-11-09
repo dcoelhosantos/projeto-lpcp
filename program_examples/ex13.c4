@@ -1,0 +1,44 @@
+struct String {
+  int size;
+  char[] content;
+}
+
+struct Student {
+  int id;
+  int age;
+  int period;
+  float[] grades;
+  String name;
+}
+
+struct Professor {
+  int id;
+  int age;
+  String[] courses;
+  String name;
+}
+
+variant User {
+  MkStudent(Student);
+  MkProfessor(Professor);
+}
+
+fn main (){
+
+  int x;
+  Professor p1;
+  int[1] xs = [x, 33];
+  p1.id = 0;
+  p1.age = 33;
+  p1.courses = [mkString("LPCP"), mkString("EL")]; 
+  p1.name = mkString("Felipe");
+
+  User u = User::MkProfessor(p1); // HERE!
+
+  for(int i = 0; i < 10; i=i+1) {
+    printf("%d%d%d", i, x, i);
+    stop; 
+    skip;
+  }
+
+}

@@ -1,0 +1,6 @@
+
+Variant Animal {
+  Dog(String, int, int);
+  Cat(int[], Name, Age);
+  Horse(Hello);
+}

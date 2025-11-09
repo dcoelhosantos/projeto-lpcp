@@ -1,0 +1,11 @@
+fn main() {
+    int n;
+    //printf("Digite um número legal:");
+    //scanf("%d", &n);
+    int i;
+    int soma = 0;
+    for(i = 1; i < n || i == 5; i = i + 1){
+        soma = soma + n;
+    }
+    //printf("O termial de %d é %d", n, soma);
+}

@@ -1,0 +1,17 @@
+
+Variant Animal {
+  Dog();
+  Cat();
+  Horse();
+}
+
+Struct String {
+  char[] val;
+  int size;
+}
+
+Struct Car {
+  String model;
+  String color;
+  float price;
+}
