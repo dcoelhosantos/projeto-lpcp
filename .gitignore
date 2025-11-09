@@ -1,0 +1,13 @@
+# Executável compilado
+scanner
+
+# Arquivos de compilação do Haskell
+*.o
+*.hi
+
+# Arquivo gerado pelo Alex
+# (Só precisamos manter o .x, que é o fonte)
+tokens.hs
+
+# Resultados de testes
+test_results.txt
